@@ -28,8 +28,8 @@
     "build": "react-scripts build",
     "test": "mocha",
     "eject": "react-scripts eject",
-    "build-contract": "node ./ethereum/compile.js",
-    "deploy-contract": "node ./ethereum/deploy.js"
+    "build-contract": "node ./src/ethereum/compile.js",
+    "deploy-contract": "node ./src/ethereum/deploy.js"
   },
   "eslintConfig": {
     "extends": [

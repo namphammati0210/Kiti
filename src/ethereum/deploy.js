@@ -10,7 +10,8 @@ const compiledFactory = require("./build/CampaignFactory.json");
 //   process.env.WALLET_MNEMONIC,
 //   process.env.INFURA_ENDPOINT
 // );
-const web3 = new Web3(ganache.provider());
+// const web3 = new Web3(ganache.provider());
+const web3 = new Web3("http://127.0.0.1:7545");
 
 const deploy = async () => {
   const accounts = await web3.eth.getAccounts();
@@ -21,11 +22,11 @@ const deploy = async () => {
     .deploy({ data: compiledFactory.evm.bytecode.object })
     .send({
       gas: "1400000",
-      from: "0x5D5cc92a092360239C675C4ee094e289f8625596",
+      from: accounts[0], //0xD2f70Ff46706bEec01e484E2F779d883eedc7695
     });
 
   console.log("Contract deployed to", result.options.address);
-  provider.engine.stop();
+  // provider.engine.stop();
 };
 
 deploy();

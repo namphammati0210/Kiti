@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import factory from "./ethereum/factory";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [campaigns, setCampaigns] = useState([]);
+  console.log("🚀 ~ file: App.tsx ~ line 6 ~ App ~ campaigns", campaigns);
+
+  const fetchAllCampaigns = async () => {
+    try {
+      const deployedCampaigns = await factory.methods
+        .getDeployedCampaigns()
+        .call();
+
+      console.log(
+        "🚀 ~ file: App.tsx ~ line 13 ~ fetchAllCampaigns ~ deployedCampaigns",
+        deployedCampaigns
+      );
+
+      setCampaigns(deployedCampaigns);
+    } catch (error) {
+      console.log(
+        "🚀 ~ file: App.tsx ~ line 11 ~ fetchAllCampaigns ~ error",
+        error
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchAllCampaigns();
+  }, []);
+
+  return <h1>Hello world</h1>;
 }
 
 export default App;
