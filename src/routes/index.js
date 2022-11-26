@@ -7,6 +7,7 @@ import {
 
 // Import layouts
 import AdminLayout from "../layouts/Admin";
+import AuthLayout from "../layouts/Auth";
 
 // Import Views
 import App from "../App";
@@ -36,9 +37,13 @@ const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/admin" element={<AdminLayout />}>
+
+      <Route path="/auth" element={<AuthLayout />}>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
+
+      <Route path="/app" element={<AdminLayout />}>
         <Route path="" element={<App />} />
       </Route>
     </>

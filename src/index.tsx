@@ -5,6 +5,9 @@ import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes";
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./assets/styles/tailwind.css";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
