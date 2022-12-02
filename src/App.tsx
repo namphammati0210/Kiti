@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import factory from "./ethereum/factory";
 
 function App() {
@@ -29,7 +30,28 @@ function App() {
     fetchAllCampaigns();
   }, []);
 
-  return <h1 className="text-3xl font-bold underline">Hello world</h1>;
+  return (
+    <div>
+      <div className="rounded-t bg-white mb-0 px-6 py-6">
+        <div className="text-center flex justify-between">
+          <h6 className="text-blueGray-700 text-xl font-bold">Campaigns</h6>
+          <button
+            className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            <Link to={"/app/campaign/new"}>Create a new Campaign</Link>
+          </button>
+        </div>
+      </div>
+      <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+        {campaigns.length ? (
+          campaigns.map((campaign) => <div>{campaign}</div>)
+        ) : (
+          <h1>Not found any campaign, Let create one</h1>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default App;

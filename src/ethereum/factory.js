@@ -1,9 +1,9 @@
-// import web3 from "./web3";
+import web3 from "./web3";
 // import ganache from ("ganache-cli");
-import Web3 from "web3";
+// import Web3 from "web3";
 import CampaignFactory from "./build/CampaignFactory.json";
 
-const web3 = new Web3("http://127.0.0.1:7545");
+// const web3 = new Web3("http://127.0.0.1:7545");
 
 const instance = new web3.eth.Contract(
   CampaignFactory.abi,

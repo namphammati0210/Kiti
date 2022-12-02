@@ -14,6 +14,8 @@ import App from "../App";
 import Landing from "../views/Landing";
 import Login from "../views/auth/Login";
 import Register from "../views/auth/Register";
+import Dashboard from "../views/admin/Dashboard";
+import CampaignCreationForm from "../components/Campaigns/CampaignCreationForm";
 
 // const routes = createBrowserRouter([
 //   {
@@ -45,6 +47,7 @@ const routes = createBrowserRouter(
 
       <Route path="/app" element={<AdminLayout />}>
         <Route path="" element={<App />} />
+        <Route path="campaign/new" element={<CampaignCreationForm />} />
       </Route>
     </>
   )
