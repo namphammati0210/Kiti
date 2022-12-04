@@ -45,7 +45,12 @@ function App() {
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
         {campaigns.length ? (
-          campaigns.map((campaign) => <div>{campaign}</div>)
+          campaigns.map((campaign) => (
+            <div>
+              <p>{campaign}</p>
+              <Link to={`campaign/${campaign}`}>View campaign</Link>
+            </div>
+          ))
         ) : (
           <h1>Not found any campaign, Let create one</h1>
         )}
