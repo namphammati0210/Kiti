@@ -6,6 +6,7 @@ import Campaign from "../../ethereum/campaign";
 
 /* Import components */
 import CardStats from "../Cards/CardStats";
+import ContributeForm from "./ContributeForm";
 
 interface ICampaignSummary {
   minimumContribution: string; // => minimum contribution
@@ -114,7 +115,21 @@ const CampaignsDetails = () => {
     }
   };
 
-  return <div>{error ? <p>{error}</p> : renderCampaignDetails()}</div>;
+  return (
+    <div>
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        <div>
+          <div className="p-4">
+            <ContributeForm address={campaignId} />
+          </div>
+
+          {renderCampaignDetails()}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default CampaignsDetails;
