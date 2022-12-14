@@ -3,8 +3,12 @@ import factory from "../../ethereum/factory";
 import web3 from "../../ethereum/web3";
 // import CardSettings from "../Cards/CardSettings";
 
+/* Import components */
+import Alerts from "../Badge/Alerts";
+
 const CampaignCreationForm = () => {
   const [minimumContribution, setMinimumContribution] = useState(1000);
+  const [error, setError] = useState(null);
 
   const onChangeMinimumContribution = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -21,15 +25,18 @@ const CampaignCreationForm = () => {
     const accounts = await web3.eth.getAccounts();
 
     try {
-      await factory.methods.createCampaign(minimumContribution).send({
-        from: accounts[0],
-        gas: "1000000",
-      });
-    } catch (error) {
+      const result = await factory.methods
+        .createCampaign(minimumContribution)
+        .send({
+          from: accounts[0],
+          // gas: "1000000",
+        });
       console.log(
-        "🚀 ~ file: CampaignCreationForm.tsx ~ line 29 ~ onSubmit ~ error",
-        error
+        "🚀 ~ file: CampaignCreationForm.tsx:28 ~ result ~ result",
+        result
       );
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
@@ -56,7 +63,9 @@ const CampaignCreationForm = () => {
           </button>
         </div>
       </div>
+
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+        {error && <Alerts variant="error" message={error} />}
         <form>
           <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
             Campaign Information

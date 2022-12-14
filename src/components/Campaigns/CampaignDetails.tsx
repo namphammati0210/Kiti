@@ -8,6 +8,7 @@ import Campaign from "../../ethereum/campaign";
 /* Import components */
 import CardStats from "../Cards/CardStats";
 import ContributeForm from "./ContributeForm";
+import Alerts from "../Badge/Alerts";
 
 interface ICampaignSummary {
   minimumContribution: string; // => minimum contribution
@@ -20,7 +21,7 @@ interface ICampaignSummary {
 const CampaignsDetails = () => {
   const { campaignId } = useParams();
   const [campaignSummary, setCampaignSummary] = useState<ICampaignSummary>();
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState(null);
 
   const fetchCampaignDetails = async () => {
     try {
@@ -35,8 +36,8 @@ const CampaignsDetails = () => {
         approversCount: summary[3],
         manager: summary[4],
       });
-    } catch (error) {
-      setError(error);
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
@@ -45,6 +46,10 @@ const CampaignsDetails = () => {
   }, []);
 
   const renderCampaignDetails = () => {
+    if (error) {
+      return <Alerts variant="error" message={error} />;
+    }
+
     if (campaignSummary) {
       const { minimumContribution, balance, requestsCount, approversCount } =
         campaignSummary;
