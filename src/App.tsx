@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import factory from "./ethereum/factory";
 
+/* Import components */
+import CardCampaign from "./components/Cards/CardCampaign";
+
 function App() {
   const [campaigns, setCampaigns] = useState([]);
   console.log("🚀 ~ file: App.tsx ~ line 6 ~ App ~ campaigns", campaigns);
@@ -43,17 +46,23 @@ function App() {
           </button>
         </div>
       </div>
-      <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-        {campaigns.length ? (
-          campaigns.map((campaign) => (
-            <div>
-              <p>{campaign}</p>
-              <Link to={`campaign/${campaign}`}>View campaign</Link>
-            </div>
-          ))
-        ) : (
-          <h1>Not found any campaign, Let create one</h1>
-        )}
+      {/* <div className="flex-auto px-4 lg:px-10 py-10 pt-0"> */}
+      <div className="container my-12 mx-auto px-4 md:px-12">
+        <div className="flex flex-wrap -mx-1 lg:-mx-4">
+          {campaigns.length ? (
+            campaigns.map((campaign) => (
+              // <div>
+              //   <p>{campaign}</p>
+              //   <Link to={`campaign/${campaign}`}>View campaign</Link>
+              // </div>
+
+              <CardCampaign campaignName={campaign} manager={""} />
+            ))
+          ) : (
+            <h1>Not found any campaign, Let create one</h1>
+          )}
+          {/* </div> */}
+        </div>
       </div>
     </div>
   );
