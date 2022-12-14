@@ -19,10 +19,7 @@ const CampaignCreationForm = () => {
 
     // Creating a campaign
     const accounts = await web3.eth.getAccounts();
-    console.log(
-      "🚀 ~ file: CampaignCreationForm.tsx ~ line 22 ~ onSubmit ~ accounts",
-      accounts[0]
-    );
+
     try {
       await factory.methods.createCampaign(minimumContribution).send({
         from: accounts[0],

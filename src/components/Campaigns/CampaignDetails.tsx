@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import web3 from "../../ethereum/web3";
 
 import Campaign from "../../ethereum/campaign";
@@ -75,16 +76,18 @@ const CampaignsDetails = () => {
             />
           </div>
           <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-            <CardStats
-              statSubtitle="NUMBER OF REQUESTS"
-              statTitle={requestsCount}
-              statArrow="down"
-              statPercent="1.10"
-              statPercentColor="text-orange-500"
-              statDescripiron="Since yesterday"
-              statIconName="fas fa-users"
-              statIconColor="bg-pink-500"
-            />
+            <Link to={`/app/campaign/${campaignId}/requests`}>
+              <CardStats
+                statSubtitle="NUMBER OF REQUESTS"
+                statTitle={requestsCount}
+                statArrow="down"
+                statPercent="1.10"
+                statPercentColor="text-orange-500"
+                statDescripiron="Since yesterday"
+                statIconName="fas fa-users"
+                statIconColor="bg-pink-500"
+              />
+            </Link>
           </div>
           <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
             <CardStats

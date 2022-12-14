@@ -17,6 +17,8 @@ import Register from "../views/auth/Register";
 import Dashboard from "../views/admin/Dashboard";
 import CampaignCreationForm from "../components/Campaigns/CampaignCreationForm";
 import CampaignsDetails from "../components/Campaigns/CampaignDetails";
+import CampaignRequesting from "../components/Campaigns/request/CampaignRequesting";
+import RequestForm from "../components/Campaigns/request/RequestForm";
 
 // const routes = createBrowserRouter([
 //   {
@@ -50,6 +52,14 @@ const routes = createBrowserRouter(
         <Route path="" element={<App />} />
         <Route path="campaign/new" element={<CampaignCreationForm />} />
         <Route path="campaign/:campaignId" element={<CampaignsDetails />} />
+        <Route
+          path="campaign/:campaignId/requests"
+          element={<CampaignRequesting />}
+        />
+        <Route
+          path="campaign/:campaignId/requests/new"
+          element={<RequestForm />}
+        />
       </Route>
     </>
   )

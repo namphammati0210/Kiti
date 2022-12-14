@@ -7,12 +7,12 @@
 
 import Web3 from "web3";
 
-window.ethereum.request({ method: "eth_requestAccounts" });
+// window.ethereum.request({ method: "eth_requestAccounts" });
 
 // const web3 = new Web3(window.ethereum);
 
 // const web3 = new Web3(window.ethereum || "http://127.0.0.1:7545");
-const web3 = new Web3("http://127.0.0.1:7545");
+const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 
 // const instance = new web3.eth.Contract(
 //   CampaignFactory.abi,
