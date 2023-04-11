@@ -4,13 +4,15 @@ import { useParams } from "react-router-dom";
 import Campaign from "../../../ethereum/campaign";
 import web3 from "../../../ethereum/web3";
 
+import Alerts from "../../Badge/Alerts";
+
 const RequestForm = () => {
   const { campaignId } = useParams();
 
   const [value, setValue] = useState("");
-  console.log("🚀 ~ file: RequestForm.tsx:11 ~ RequestForm ~ value", value);
   const [desciption, setDescription] = useState("");
   const [recipient, setRecipient] = useState("");
+  const [error, setError] = useState(null);
 
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
@@ -24,19 +26,15 @@ const RequestForm = () => {
   const onSubmit = async () => {
     try {
       const campaign = Campaign(campaignId);
-
       const accounts = await web3.eth.getAccounts();
       const weiValue = web3.utils.toWei(value, "ether");
-      console.log(
-        "🚀 ~ file: RequestForm.tsx:30 ~ onSubmit ~ weiValue",
-        weiValue
-      );
 
       await campaign.methods
         .createRequest(desciption, weiValue, recipient)
         .send({ from: accounts[0], gas: "1000000" });
-    } catch (error) {
-      console.log("🚀 ~ file: RequestForm.tsx:27 ~ onSubmit ~ error", error);
+    } catch (error: any) {
+      console.log("🚀 ~ file: RequestForm.tsx:36 ~ onSubmit ~ error:", error);
+      setError(error.message);
     }
   };
 
@@ -56,6 +54,7 @@ const RequestForm = () => {
         </div>
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+        {error && <Alerts variant="error" message={error} />}
         <form>
           <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
             Campaign Information
@@ -82,7 +81,7 @@ const RequestForm = () => {
                   className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                   htmlFor="grid-password"
                 >
-                  Value in Ether
+                  Value in (Ether)
                 </label>
                 <input
                   type="text"
@@ -97,7 +96,7 @@ const RequestForm = () => {
                   className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                   htmlFor="grid-password"
                 >
-                  Recipient
+                  Recipient (Address)
                 </label>
                 <input
                   type="text"

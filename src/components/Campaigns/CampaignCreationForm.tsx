@@ -1,5 +1,6 @@
 import { useState } from "react";
 import factory from "../../ethereum/factory";
+
 import web3 from "../../ethereum/web3";
 // import CardSettings from "../Cards/CardSettings";
 
@@ -25,16 +26,10 @@ const CampaignCreationForm = () => {
     const accounts = await web3.eth.getAccounts();
 
     try {
-      const result = await factory.methods
-        .createCampaign(minimumContribution)
-        .send({
-          from: accounts[0],
-          // gas: "1000000",
-        });
-      console.log(
-        "🚀 ~ file: CampaignCreationForm.tsx:28 ~ result ~ result",
-        result
-      );
+      await factory.methods.createCampaign(minimumContribution).send({
+        from: accounts[0],
+        gas: "1000000",
+      });
     } catch (error: any) {
       setError(error.message);
     }
