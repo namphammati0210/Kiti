@@ -13,6 +13,7 @@ const RequestForm = () => {
   const [desciption, setDescription] = useState("");
   const [recipient, setRecipient] = useState("");
   const [error, setError] = useState(null);
+  const [successMsg, setSuccessMsg] = useState<string>("");
 
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
@@ -29,11 +30,14 @@ const RequestForm = () => {
       const accounts = await web3.eth.getAccounts();
       const weiValue = web3.utils.toWei(value, "ether");
 
-      await campaign.methods
+      const request = await campaign.methods
         .createRequest(desciption, weiValue, recipient)
         .send({ from: accounts[0], gas: "1000000" });
+
+      if (request) {
+        setSuccessMsg("Create a request sucessfully");
+      }
     } catch (error: any) {
-      console.log("🚀 ~ file: RequestForm.tsx:36 ~ onSubmit ~ error:", error);
       setError(error.message);
     }
   };
@@ -55,6 +59,7 @@ const RequestForm = () => {
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
         {error && <Alerts variant="error" message={error} />}
+        {successMsg && <Alerts variant="success" message={successMsg} />}
         <form>
           <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
             Campaign Information
