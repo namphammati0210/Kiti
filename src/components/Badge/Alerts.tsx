@@ -28,6 +28,7 @@ const Alerts = ({ variant, message }: IProps) => {
           <button className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
             <span onClick={() => setIsOpen(false)}>×</span>
           </button>
+          <img></img>
         </div>
       )}
     </div>
