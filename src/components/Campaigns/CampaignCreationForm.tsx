@@ -10,6 +10,7 @@ import Alerts from "../Badge/Alerts";
 const CampaignCreationForm = () => {
   const [minimumContribution, setMinimumContribution] = useState(1000);
   const [error, setError] = useState(null);
+  const [successMsg, setSuccessMsg] = useState<string>("");
 
   const onChangeMinimumContribution = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -26,10 +27,15 @@ const CampaignCreationForm = () => {
     const accounts = await web3.eth.getAccounts();
 
     try {
-      await factory.methods.createCampaign(minimumContribution).send({
-        from: accounts[0],
-        gas: "1000000",
-      });
+      const request = await factory.methods
+        .createCampaign(minimumContribution)
+        .send({
+          from: accounts[0],
+          gas: "1000000",
+        });
+      if (request) {
+        setSuccessMsg("Create a request sucessfully");
+      }
     } catch (error: any) {
       setError(error.message);
     }
@@ -61,6 +67,7 @@ const CampaignCreationForm = () => {
 
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
         {error && <Alerts variant="error" message={error} />}
+        {successMsg && <Alerts variant="success" message={successMsg} />}
         <form>
           <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
             Campaign Information
