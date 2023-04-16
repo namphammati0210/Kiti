@@ -129,11 +129,11 @@ const CampaignsDetails = () => {
         <p>{error}</p>
       ) : (
         <div>
+          {renderCampaignDetails()}
+
           <div className="p-4">
             <ContributeForm address={campaignId} />
           </div>
-
-          {renderCampaignDetails()}
         </div>
       )}
     </div>
