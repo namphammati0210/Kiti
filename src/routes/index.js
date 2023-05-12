@@ -20,24 +20,6 @@ import CampaignsDetails from "../components/Campaigns/CampaignDetails";
 import CampaignRequesting from "../components/Campaigns/request/CampaignRequesting";
 import RequestForm from "../components/Campaigns/request/RequestForm";
 
-// const routes = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Landing />,
-//   },
-//   {
-//     path: "/admin",
-//     element: <AdminLayout />,
-//     // errorElement: <ErrorPage />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <App />,
-//       },
-//     ],
-//   },
-// ]);
-
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <>

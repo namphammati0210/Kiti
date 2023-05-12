@@ -7,18 +7,12 @@ import CardCampaign from "./components/Cards/CardCampaign";
 
 function App() {
   const [campaigns, setCampaigns] = useState([]);
-  console.log("🚀 ~ file: App.tsx ~ line 6 ~ App ~ campaigns", campaigns);
 
   const fetchAllCampaigns = async () => {
     try {
       const deployedCampaigns = await factory.methods
         .getDeployedCampaigns()
         .call();
-
-      console.log(
-        "🚀 ~ file: App.tsx ~ line 13 ~ fetchAllCampaigns ~ deployedCampaigns",
-        deployedCampaigns
-      );
 
       setCampaigns(deployedCampaigns);
     } catch (error) {

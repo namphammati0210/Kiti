@@ -36,11 +36,11 @@ export default function Landing() {
                   <h1 className="text-white font-semibold text-5xl">
                     Your story starts with us.
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200">
+                  {/* <p className="mt-4 text-lg text-blueGray-200">
                     This is a simple example of a Landing Page you can build
                     using Notus React. It features multiple CSS components based
                     on the Tailwind CSS design system.
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -76,10 +76,10 @@ export default function Landing() {
                       <i className="fas fa-award"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Awarded Agency</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
+                    {/* <p className="mt-2 mb-4 text-blueGray-500">
                       Divide details about your product or agency work into
                       parts. A paragraph describing a feature will be enough.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -91,10 +91,10 @@ export default function Landing() {
                       <i className="fas fa-retweet"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Free Revisions</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
+                    {/* <p className="mt-2 mb-4 text-blueGray-500">
                       Keep you user engaged by providing meaningful information.
                       Remember that by this time, the user is curious.
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -106,10 +106,10 @@ export default function Landing() {
                       <i className="fas fa-fingerprint"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Verified Company</h6>
-                    <p className="mt-2 mb-4 text-blueGray-500">
+                    {/* <p className="mt-2 mb-4 text-blueGray-500">
                       Write a few lines about each one. A paragraph describing a
                       feature will be enough. Keep you user engaged!
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
