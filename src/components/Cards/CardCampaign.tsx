@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 interface IProps {
   campaignName: string;
-  manager: string;
+  manager?: string;
   date?: string;
 }
 
@@ -18,7 +18,7 @@ const CardCampaign = ({ campaignName, manager }: IProps) => {
 
         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 className="text-lg w-[200px] truncate">{campaignName}</h1>
-          <p className="text-grey-darker text-sm">11/1/19</p>
+          <p className="text-grey-darker text-sm">13/05/2023</p>
         </header>
 
         <footer className="flex items-center justify-between leading-none p-2 md:p-4">
@@ -27,7 +27,7 @@ const CardCampaign = ({ campaignName, manager }: IProps) => {
             className="block rounded-full"
             src="https://picsum.photos/32/32/?random"
           />
-          <p className="ml-2 text-sm">Manager: {manager}</p>
+          {/* <p className="ml-2 text-sm">Manager: {manager}</p> */}
 
           {/* <span className="hidden">Like</span>
             <i className="fa fa-heart"></i> */}

@@ -7,6 +7,7 @@ import CardCampaign from "./components/Cards/CardCampaign";
 
 function App() {
   const [campaigns, setCampaigns] = useState([]);
+  console.log("🚀 ~ file: App.tsx:10 ~ App ~ campaigns:", campaigns);
 
   const fetchAllCampaigns = async () => {
     try {
@@ -53,7 +54,7 @@ function App() {
               <CardCampaign campaignName={campaign} manager={""} />
             ))
           ) : (
-            <h1>Not found any campaign, Let create one</h1>
+            <h1>Not found any campaign, Let's create the new one</h1>
           )}
           {/* </div> */}
         </div>

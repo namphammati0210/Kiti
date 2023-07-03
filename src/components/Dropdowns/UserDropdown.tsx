@@ -18,7 +18,7 @@ const UserDropdown = () => {
   };
   return (
     <>
-      <a
+      {/* <a
         className="text-blueGray-500 block"
         href="#pablo"
         ref={btnDropdownRef}
@@ -36,7 +36,7 @@ const UserDropdown = () => {
             />
           </span>
         </div>
-      </a>
+      </a> */}
       <div
         ref={popoverDropdownRef}
         className={
